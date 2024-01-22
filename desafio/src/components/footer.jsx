@@ -14,9 +14,13 @@ export default function Footer() {
                     <ul className='infoFooter'>
                         <li><img src={Logo} alt="Logo" className='logo' /></li>
                         <li><span>MyRide Inc., 2nd Floor, New York, NY 10016</span> </li>
-                        <li><img src={Social} alt="Social" className='face' />
-                            <img src={Social2} alt="Social" className='insta' />
-                            <img src={Social3} alt="Social" className='twitter' /></li>
+                        <li>
+                            <div className='teste'>
+                                <img src={Social} alt="Social" className='face' />
+                                <img src={Social2} alt="Social" className='insta' />
+                                <img src={Social3} alt="Social" className='twitter' />
+                            </div>
+                        </li>
                     </ul>
 
                 </div>
@@ -24,8 +28,9 @@ export default function Footer() {
                 <div className='geral'>
                     <div className="container-infos">
                         <div className="contatos">
-                            <h3>Company</h3>
+
                             <ul className='listaFooter'>
+                                <h3>Company</h3>
                                 <li><a href="">About Us</a></li>
                                 <li><a href="">News</a></li>
                                 <li><a href="">Careers</a></li>
@@ -33,8 +38,9 @@ export default function Footer() {
                             </ul>
                         </div>
                         <div className="infos">
-                            <h3>Support</h3>
+
                             <ul className='listaFooter'>
+                                <h3>Support</h3>
                                 <li><a href="">FAQ</a></li>
                                 <li><a href="">US Office</a></li>
                                 <li><a href="">Asia Office</a></li>
@@ -42,8 +48,9 @@ export default function Footer() {
                             </ul>
                         </div>
                         <div className="infos">
-                            <h3>More</h3>
+
                             <ul className='listaFooter'>
+                                <h3>More</h3>
                                 <li><a href="">Become a partener</a></li>
                                 <li><a href="">Partner Support</a></li>
                                 <li><a href="">Mobile app links</a></li>

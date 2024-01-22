@@ -14,7 +14,6 @@ a:hover {
 
 .containerFooter {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background: #242424;
 }
@@ -23,9 +22,16 @@ a:hover {
     color: #B3B3B3;
 }
 
-.headerStyle img {
-    margin-left: 10px;
+.infoFooter li {
+    margin: 10px;
+    gap: 300px;
 }
+
+
+.listaFooter h3 {
+    color: #FFFFFF;
+}
+
 
 
 .container-infos {
@@ -33,11 +39,12 @@ a:hover {
 
 }
 
+.geral {
+    margin-left: 100px;
+}
+
 .listaFooter li {
     margin-right: 50px;
     gap: 30px;
-}
-
-.IconsHeader img {
-    margin-right: 10px;
+    margin-bottom: 13px;
 }
