@@ -2,7 +2,6 @@ import React from "react";
 import Booking from '../../assets/BookingImg.svg'
 import '../../style/SectionOne.css'
 import FormBase from '../Material UI/FormBase'
-import ButtonIcon from '../Material UI/ButtonIcon'
 
 
 export default function booking() {
@@ -26,7 +25,6 @@ export default function booking() {
                 </div>
                 <div className="form" >
                     <FormBase />
-                    <ButtonIcon />
 
 
 
