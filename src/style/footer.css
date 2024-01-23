@@ -39,6 +39,11 @@ a:hover {
 
 }
 
+.teste {
+    gap: 20px;
+    display: flex;
+}
+
 .geral {
     margin-left: 100px;
 }
