@@ -38,10 +38,11 @@ export default function BasicTextFields() {
 
             <div>
                 <Stack direction="row" spacing={2}>
-                <ColorButton variant="contained" startIcon={<SearchOutlinedIcon />}>
-                    Find a driver
-                </ColorButton>
-            </Stack>
+
+                    <ColorButton size='large' variant="contained" startIcon={<SearchOutlinedIcon />}>
+                        Find a driver
+                    </ColorButton>
+                </Stack>
             </div>
         </Box>
 
