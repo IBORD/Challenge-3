@@ -3,4 +3,46 @@
     justify-content: center;
     align-items: center;
     gap: 45px;
+    background: #242424;
+    padding-top: 50px;
+
+}
+
+.tituloForm p {
+    color: #ffff;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.tituloForm span {
+    color: #ffff;
+    font-size: 50px;
+    font-weight: 700;
+    margin-top: -100px;
+}
+
+.tituloForm span i {
+    color: #FBA403;
+    font-weight: 500;
+}
+
+.textospan {
+    margin-top: -30px;
+}
+
+.styleP {
+    color: #ffff;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.styleForm {
+    background: #2c2c2c;
+    padding: 20px;
+    border-radius: 3px;
+    margin-top: 20px;
+}
+
+.geralInfo {
+    margin-top: -50px;
 }

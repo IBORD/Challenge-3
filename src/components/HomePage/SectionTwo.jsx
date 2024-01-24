@@ -1,13 +1,22 @@
+import '../Material UI/Cards'
+import Cards from '../Material UI/Cards'
+import '../../style/SectionTwo.css'
 
 export default function PainelRide() {
     return (
         <div className="containerMain">
             <div className="Titulo">
-                <h1>Why should you ride with us?</h1>
-                <p>Best in class rides</p>
+                <div className='titi'>
+                    <p>Why should you ride with us?</p>
+                </div>
+
+                <div className='sub'>
+                    <p>Best in class rides</p>
+                </div>
+
             </div>
             <div className="cards">
-
+                <Cards />
 
             </div>
 

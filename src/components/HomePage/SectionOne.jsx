@@ -11,32 +11,26 @@ export default function booking() {
                 <img src={Booking} alt="Logo" className='logo' />
             </div>
             <div className="geralInfo">
-
-
                 <div className="tituloForm">
-                    <h1>NEED A RIDE?
-
-                    </h1>
-                    <p>
-                        <strong>Book witch <i>myRIDE</i> now!</strong>
-                    </p>
-
-
+                    <div>
+                        <p>NEED A RIDE?</p>
+                    </div>
+                    <div className="textospan">
+                        <span>
+                            <strong>Book witch <i>myRIDE</i> now!</strong>
+                        </span>
+                    </div>
                 </div>
-                <div className="form" >
-                    <FormBase />
-
-
-
-
-
+                <div className="styleForm">
+                    <div className="styleP">
+                        <p>Find a ride now </p>
+                    </div>
+                    <div className="form" >
+                        <FormBase />
+                    </div>
                 </div>
-
-
             </div>
-
         </div>
-
     );
 
 

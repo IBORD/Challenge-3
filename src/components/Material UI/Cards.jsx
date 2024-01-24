@@ -5,12 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { Box } from '@mui/material';
 
-const CardData = {
-    title: string,
-    image: string,
-    description: string
-};
 
 const Cards = () => {
     const cardsData = [
@@ -27,7 +23,7 @@ const Cards = () => {
     ];
 
     return (
-        <div>
+        <Box display={'flex'} style={{ gap: '20px' }}>
             {cardsData.map((card, index) => (
                 <Card key={index} sx={{ maxWidth: 300, marginBottom: 2 }}>
                     <CardMedia
@@ -48,7 +44,7 @@ const Cards = () => {
                     </CardActions>
                 </Card>
             ))}
-        </div>
+        </Box>
     );
 };
 

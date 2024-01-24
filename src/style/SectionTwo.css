@@ -1,0 +1,31 @@
+.containerMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 100px;
+    background: #242424;
+}
+
+.Titulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+
+
+}
+
+.titi {
+    font-weight: 300;
+    font-size: 30px;
+    text-transform: uppercase;
+    color: #FBA403;
+}
+
+.sub {
+    margin-top: -80px;
+    font-size: 50px;
+    font-weight: 600;
+    color: #ffff;
+}
