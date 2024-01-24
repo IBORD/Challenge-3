@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import './Btn'
 import Btn from './Btn';
+import FormControl from '@mui/material/FormControl';
 
 
 export default function BasicTextFields() {
@@ -10,26 +11,28 @@ export default function BasicTextFields() {
         <Box
             component="form"
             sx={{
-                '& > :not(style)': { m: 1, width: '25ch' },
+                '& > :not(style)': { m: 1, width: '75ch' }
             }
             }
             noValidate
             autoComplete="off"
         >
             <div>
-                <TextField id="outlined-basic" label="Your Pickup" variant="outlined" />
+                <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
+                    <TextField id="outlined-basic" label="Your Pickup" variant="outlined" color="warning" />
+                </FormControl>
 
             </div>
             <div>
-
-                <TextField id="outlined-basic" label="Your Destination" variant="outlined" />
+                <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
+                    <TextField id="outlined-basic" label="Your Destination" variant="outlined" color="warning" />
+                </FormControl>
             </div>
 
             <div>
                 <Btn />
             </div>
         </Box>
-
 
 
     );

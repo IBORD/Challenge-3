@@ -19,7 +19,7 @@ export default function Btn() {
     return (
         <Stack direction="row" spacing={2}>
 
-            <ColorButton size='large' variant="contained" startIcon={<SearchOutlinedIcon />}>
+            <ColorButton sx={{ m: 1, width: '100ch' }} size='large' variant="contained" startIcon={<SearchOutlinedIcon />}>
                 Find a driver
             </ColorButton>
         </Stack>
