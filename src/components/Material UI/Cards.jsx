@@ -18,7 +18,7 @@ const Cards = () => {
             link: 'http://bit.ly/47PvYFc'
         },
         {
-            title: 'Confort',
+            title: 'Comfort',
             image: 'https://i.ibb.co/RpwCqYJ/card-image-1.jpg',
             description: 'If comfort is your priority, this is the ride for you. It’s spacious and packed with features.',
             backgroundColor: '#2c2c2c',

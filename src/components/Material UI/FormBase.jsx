@@ -5,6 +5,17 @@ import './Btn'
 import Btn from './Btn';
 import FormControl from '@mui/material/FormControl';
 
+const styles = {
+    textFieldText: {
+        color: 'white',
+    },
+    textFieldLabel: {
+        color: 'white',
+    },
+    textFieldBorder: {
+        borderColor: 'white',
+    },
+};
 
 export default function BasicTextFields() {
     return (
@@ -18,14 +29,14 @@ export default function BasicTextFields() {
             autoComplete="off"
         >
             <div>
-                <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
-                    <TextField id="outlined-basic" label="Your Pickup" variant="outlined" color="warning" />
+                <FormControl sx={{ m: 1, width: '75ch' }} variant="standard" >
+                    <TextField id="outlined-basic" label="Your Pickup" variant="outlined" color="warning" sx={{ input: styles.textFieldText, label: styles.textFieldLabel, borderColor: styles.textFieldBorder }} />
                 </FormControl>
 
             </div>
             <div>
                 <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
-                    <TextField id="outlined-basic" label="Your Destination" variant="outlined" color="warning" />
+                    <TextField id="outlined-basic" label="Your Destination" variant="outlined" color="warning" sx={{ input: styles.textFieldText, label: styles.textFieldLabel, borderColor: styles.textFieldBorder }} />
                 </FormControl>
             </div>
 
