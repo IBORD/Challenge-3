@@ -3,11 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 
-const styles = {
-    textField: {
-        color: 'white',
-    },
-};
+
 
 export default function EndForm() {
     return (
@@ -22,13 +18,28 @@ export default function EndForm() {
         >
             <div>
                 <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
-                    <TextField id="outlined-basic" label="Your Pickup" variant="outlined" color="warning" sx={styles.textField} />
+                    <TextField id="outlined-basic" placeholder='Full Name' variant="outlined" />
                 </FormControl>
 
             </div>
             <div>
                 <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
-                    <TextField id="outlined-basic" label="Your Destination" variant="outlined" color="warning" sx={styles.textField} />
+                    <TextField id="outlined-basic" placeholder='Email Adress' variant="outlined" />
+                </FormControl>
+            </div>
+            <div>
+                <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
+                    <TextField id="outlined-basic" select label='Country' variant="outlined" />
+                </FormControl>
+            </div>
+            <div>
+                <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
+                    <TextField id="outlined-basic" select label='City' variant="outlined" />
+                </FormControl>
+            </div>
+            <div>
+                <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
+                    <TextField id="outlined-basic" placeholder='Referral Code' variant="outlined" />
                 </FormControl>
             </div>
         </Box>
