@@ -10,10 +10,10 @@ const styles = {
         color: 'white',
     },
     textFieldLabel: {
-        color: 'white',
+        label: 'white',
     },
     textFieldBorder: {
-        borderColor: 'white',
+        border: 'white',
     },
 };
 
@@ -30,7 +30,7 @@ export default function BasicTextFields() {
         >
             <div>
                 <FormControl sx={{ m: 1, width: '75ch' }} variant="standard" >
-                    <TextField id="outlined-basic" label="Your Pickup" variant="outlined" color="warning" sx={{ input: styles.textFieldText, label: styles.textFieldLabel, borderColor: styles.textFieldBorder }} />
+                    <TextField id="outlined-basic" label="Your Pickup" variant="outlined" color="warning" sx={{ input: styles.textFieldText, label: styles.textFieldLabel, border: styles.textFieldBorder }} />
                 </FormControl>
 
             </div>
