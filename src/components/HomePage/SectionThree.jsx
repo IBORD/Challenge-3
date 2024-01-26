@@ -1,11 +1,16 @@
 import Forms from '../Material UI/Forms'
 import '../../style/SectionThree.css'
+import pop from '../../assets/popup.svg'
 export default function Form() {
     return (
         <div className="containerForm">
+
             <div className="Header">
-                <p>drive with my ride</p>
-                <p>Register as a driver using the form below. Our team will assess and get back to you within 48 hours.</p>
+                <div className='imgpop'><img src={pop} alt="Logo" className='logo' /></div>
+
+                <div className='Head'><p>Drive with MyRide</p></div>
+                <div className='sub1'><p>Register as a driver using the form below. Our team will assess and get back to you within 48 hours.</p></div>
+
 
                 <div className="forms">
 

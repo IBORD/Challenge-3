@@ -14,8 +14,22 @@
     padding: 20px;
     border-radius: 3px;
     margin-top: 20px;
+
 }
 
+.Head p {
+    font-weight: 700;
+    font-size: 27px;
+    color: #FBA403;
+
+}
+
+.sub1 {
+    color: aliceblue;
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: -10px;
+}
 
 .styleForm {
     background: #2c2c2c;
