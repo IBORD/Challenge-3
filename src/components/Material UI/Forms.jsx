@@ -33,6 +33,12 @@ export default function EndForm() {
 
     ]);
 
+    const styles = {
+        textFieldText: {
+            color: 'white',
+        },
+
+    };
 
     const [selectedCountry, setSelectedCountry] = useState('');
     const [city, setCity] = useState('');
@@ -154,6 +160,7 @@ export default function EndForm() {
             <div>
                 <FormControl sx={{ m: 1, width: '150ch' }} variant="standard">
                     <TextField
+                        sx={{ input: styles.textFieldText }}
                         id="name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -170,6 +177,7 @@ export default function EndForm() {
             <div>
                 <FormControl sx={{ m: 1, width: '150ch' }} variant="standard">
                     <TextField
+                        sx={{ input: styles.textFieldText }}
                         id="email"
                         value={email}
                         placeholder='Email Adress'
@@ -182,7 +190,7 @@ export default function EndForm() {
                 </FormControl>
             </div>
             <div>
-                <FormControl sx={{ m: 1, width: '150ch' }} variant="standard">
+                <FormControl sx={{ m: 1, width: '150ch', color: 'white' }} variant="standard">
                     <TextField
                         id="outlined-basic-country"
                         select
@@ -190,6 +198,16 @@ export default function EndForm() {
                         variant="outlined"
                         value={selectedCountry}
                         onChange={handleCountryChange}
+                        InputProps={{
+                            style: {
+                                color: 'white',
+                            },
+                        }}
+                        sx={{
+                            label: {
+                                color: 'grey', // Altere a cor aqui
+                            },
+                        }}
                     >
                         {Object.keys(City).map((country) => (
                             <MenuItem key={country} value={country}>
@@ -209,6 +227,16 @@ export default function EndForm() {
                         value={city}
                         onChange={handleCityChange}
                         disabled={!selectedCountry}
+                        InputProps={{
+                            style: {
+                                color: 'white',
+                            },
+                        }}
+                        sx={{
+                            label: {
+                                color: 'grey',
+                            },
+                        }}
                     >
                         {selectedCountry &&
                             City[selectedCountry] &&
@@ -223,6 +251,7 @@ export default function EndForm() {
             <div>
                 <FormControl sx={{ m: 1, width: '150ch' }} variant="standard">
                     <TextField
+                        sx={{ input: styles.textFieldText }}
                         id="code"
                         value={code}
                         onChange={(e) => setCode(e.target.value)}

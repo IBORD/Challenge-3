@@ -25,7 +25,6 @@ export default function Form() {
                 </div>
 
                 <Forms />
-                <PostDetails />
 
 
 
