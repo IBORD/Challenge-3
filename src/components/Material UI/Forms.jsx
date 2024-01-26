@@ -24,7 +24,7 @@ export default function EndForm() {
     const [code, setCode] = useState('');
     const [codeError, setCodeError] = useState(false);
     const [nameError, setNameError] = useState(false);
-    const [checked, setChecked] = React.useState(true);
+    const [checked, setChecked] = React.useState(false);
     const [carType, setCarType] = useState('');
     const [carTypeButtons, setCarTypeButtons] = useState([
         { label: 'Radio 1', value: 'radio1' },
@@ -33,16 +33,21 @@ export default function EndForm() {
 
     ]);
 
-    const [selectedCountry, setSelectedCountry] = useState('');
 
+    const [selectedCountry, setSelectedCountry] = useState('');
     const [city, setCity] = useState('');
+    const [countryError, setCountryError] = useState('');
 
     const handleCityChange = (event) => {
         setCity(event.target.value);
-        setSelectedCountry(event.target.value);
     };
+
     const handleCountryChange = (event) => {
         setSelectedCountry(event.target.value);
+        // Limpe o estado de city quando o país é alterado
+        setCity('');
+        const selectedCountry = event.target.value;
+
     };
 
     const handleSubmit = async (data) => {
@@ -52,14 +57,23 @@ export default function EndForm() {
         const isNameValid = validateName();
         const isEmailValid = validateEmail();
         const isCodeValid = validateCode();
+        const isCountryValid = validateForm();
 
-        if (isNameValid && isEmailValid && isCodeValid) {
+        if (isNameValid && isEmailValid && isCodeValid && isCountryValid) {
+            setName('');
+            setEmail('');
+            setCode('');
+            setCarType('');
+            setSelectedCountry('');
+            setCity('');
 
             const formData = {
                 name,
                 email,
                 code,
                 carType,
+                selectedCountry,
+                city,
             };
 
             try {
@@ -68,6 +82,7 @@ export default function EndForm() {
 
 
                 console.log('Dados do formulário enviados com sucesso', response.data);
+                alert('Form submitted successfully!');
             } catch (error) {
 
                 console.error('Erro ao enviar dados do formulário', error);
@@ -78,7 +93,13 @@ export default function EndForm() {
         setChecked(event.target.checked);
     };
 
-
+    const validateForm = () => {
+        if (!selectedCountry) {
+            setCountryError('Please select a country');
+            return false;
+        }
+        return true;
+    };
 
     const validateName = () => {
         if (!name.match(/[A-Za-z]+(\s[A-Za-z]+)+$/)) {
@@ -124,14 +145,14 @@ export default function EndForm() {
             component="form"
             onSubmit={handleSubmit}
             sx={{
-                '& > :not(style)': { m: 1, width: '75ch' }
+                '& > :not(style)': { m: 1, width: '150ch' }
             }
             }
             noValidate
             autoComplete="off"
         >
             <div>
-                <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
+                <FormControl sx={{ m: 1, width: '150ch' }} variant="standard">
                     <TextField
                         id="name"
                         value={name}
@@ -147,7 +168,7 @@ export default function EndForm() {
 
             </div>
             <div>
-                <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
+                <FormControl sx={{ m: 1, width: '150ch' }} variant="standard">
                     <TextField
                         id="email"
                         value={email}
@@ -161,7 +182,7 @@ export default function EndForm() {
                 </FormControl>
             </div>
             <div>
-                <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
+                <FormControl sx={{ m: 1, width: '150ch' }} variant="standard">
                     <TextField
                         id="outlined-basic-country"
                         select
@@ -179,7 +200,7 @@ export default function EndForm() {
                 </FormControl>
             </div>
             <div>
-                <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
+                <FormControl sx={{ m: 1, width: '150ch' }} variant="standard">
                     <TextField
                         id="outlined-basic-city"
                         select
@@ -200,7 +221,7 @@ export default function EndForm() {
                 </FormControl>
             </div>
             <div>
-                <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
+                <FormControl sx={{ m: 1, width: '150ch' }} variant="standard">
                     <TextField
                         id="code"
                         value={code}
@@ -216,7 +237,7 @@ export default function EndForm() {
                     />
                 </FormControl>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <div >
                 <Switch
                     checked={checked}
                     onChange={(event) => {
@@ -229,9 +250,9 @@ export default function EndForm() {
                     inputProps={{ 'aria-label': 'controlled' }}
                 />
             </div>
-            <div style={{ display: 'flex' }}>
+            <div>
                 {checked && (
-                    <div>
+                    <div style={{ display: 'flex', gap: '20px' }}>
                         {carTypeButtons.map((button) => (
                             <div key={button.value}>
                                 <input
@@ -254,7 +275,7 @@ export default function EndForm() {
                     </div>
                 )}
             </div>
-            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <div style={{ display: 'flex' }}>
                 <Button variant="contained" color="warning" type="submit">
                     Submit
                 </Button>
