@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "São Paulo",
+        "country": "Brasil"
+    },
+    {
+        "id": 2,
+        "name": "Rio de Janeiro",
+        "country": "Brasil"
+    },
+    {
+        "id": 3,
+        "name": "Buenos Aires",
+        "country": "Argentina"
+    },
+    {
+        "id": 4,
+        "name": "Santiago",
+        "country": "Chile"
+    }
+]

@@ -6,6 +6,16 @@ import Switch from '@mui/material/Switch';
 import { Button } from "@mui/material";
 import FormHelperText from '@mui/material/FormHelperText';
 import axios from 'axios';
+import {
+    Container,
+    CssBaseline,
+    Grid,
+    MenuItem,
+    Select,
+    InputLabel,
+} from '@mui/material';
+import City from '../../Data/Country-City1.json'
+
 
 export default function EndForm() {
     const [name, setName] = useState('');
@@ -20,18 +30,31 @@ export default function EndForm() {
         { label: 'Radio 1', value: 'radio1' },
         { label: 'Radio 2', value: 'radio2' },
         { label: 'Radio 3', value: 'radio3' },
+
     ]);
+
+    const [selectedCountry, setSelectedCountry] = useState('');
+
+    const [city, setCity] = useState('');
+
+    const handleCityChange = (event) => {
+        setCity(event.target.value);
+        setSelectedCountry(event.target.value);
+    };
+    const handleCountryChange = (event) => {
+        setSelectedCountry(event.target.value);
+    };
 
     const handleSubmit = async (data) => {
         data.preventDefault();
 
-        // Validar os dados do formulário
+
         const isNameValid = validateName();
         const isEmailValid = validateEmail();
         const isCodeValid = validateCode();
 
         if (isNameValid && isEmailValid && isCodeValid) {
-            // Coletar os dados do formulário do estado aqui
+
             const formData = {
                 name,
                 email,
@@ -140,14 +163,40 @@ export default function EndForm() {
             <div>
                 <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
                     <TextField
-                        id="outlined-basic"
-                        select label='Country'
-                        variant="outlined" />
+                        id="outlined-basic-country"
+                        select
+                        label="Country"
+                        variant="outlined"
+                        value={selectedCountry}
+                        onChange={handleCountryChange}
+                    >
+                        {Object.keys(City).map((country) => (
+                            <MenuItem key={country} value={country}>
+                                {country}
+                            </MenuItem>
+                        ))}
+                    </TextField>
                 </FormControl>
             </div>
             <div>
                 <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
-                    <TextField id="outlined-basic" select label='City' variant="outlined" />
+                    <TextField
+                        id="outlined-basic-city"
+                        select
+                        label="City"
+                        variant="outlined"
+                        value={city}
+                        onChange={handleCityChange}
+                        disabled={!selectedCountry}
+                    >
+                        {selectedCountry &&
+                            City[selectedCountry] &&
+                            City[selectedCountry].map((cityName, index) => (
+                                <MenuItem key={index} value={cityName}>
+                                    {cityName}
+                                </MenuItem>
+                            ))}
+                    </TextField>
                 </FormControl>
             </div>
             <div>
