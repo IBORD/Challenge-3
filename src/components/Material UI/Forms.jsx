@@ -87,10 +87,10 @@ export default function EndForm() {
     useEffect(() => {
         if (checked) {
             setCarTypeButtons([
-                { label: <img src="https://i.ibb.co/YNWH8hm/Card-Image-1.png" alt="car1" />, value: 'sedan', name: 'car1' },
-                { label: <img src="https://i.ibb.co/2YPcMqh/Card-Image-2.png" alt="car2" />, value: 'radio2', name: 'car2' },
-                { label: <img src="https://i.ibb.co/dPYVKWW/Card-Image-3.png" alt="car3" />, value: 'radio3', name: 'car3' },
-                { label: <img src="https://i.ibb.co/KNSjXQK/Card-Image-4.png" alt="car4" />, value: 'radio4', name: 'car4' },
+                { label: <img src="https://i.ibb.co/YNWH8hm/Card-Image-1.png" alt="car1" />, value: 'Sedan', name: 'Sedan' },
+                { label: <img src="https://i.ibb.co/2YPcMqh/Card-Image-2.png" alt="car2" />, value: 'SUV/Van', name: 'SUV/Van' },
+                { label: <img src="https://i.ibb.co/dPYVKWW/Card-Image-3.png" alt="car3" />, value: 'Semi Luxury', name: 'Semi Luxury' },
+                { label: <img src="https://i.ibb.co/KNSjXQK/Card-Image-4.png" alt="car4" />, value: 'Luxury Car', name: 'Luxury Car' },
             ]);
         } else {
             setCarTypeButtons([]);
@@ -117,7 +117,7 @@ export default function EndForm() {
                         variant="outlined"
                         pattern="[A-Za-z]+(\s[A-Za-z]+)+"
                         title="Somente letras são permitidas"
-                        onBlur={validateName}
+                        onSubmit={validateName}
                         error={nameError}
                         helperText={nameError ? "Somente letras são permitidas" : ""} />
                 </FormControl>
@@ -132,7 +132,7 @@ export default function EndForm() {
                         variant="outlined"
                         onChange={(e) => setEmail(e.target.value)}
                         required
-                        type="email" onBlur={validateEmail}
+                        type="email" onSubmit={validateEmail}
                         error={emailError}
                         helperText={emailError ? "Por favor, insira um endereço de email válido" : ""} />
                 </FormControl>
@@ -161,7 +161,7 @@ export default function EndForm() {
                         variant="outlined"
                         pattern="[A-Za-z]{3}-[0-9]{3}"
                         title="O código deve seguir o formato de 3 letras, seguidas por um hífen e 3 números (exemplo: AAA-001)"
-                        onBlur={validateCode}
+                        onSubmit={validateCode}
                         error={codeError}
                         helperText={codeError ? "O código deve seguir o formato de 3 letras, seguidas por um hífen e 3 números (exemplo: AAA-001)" : ""}
                     />
