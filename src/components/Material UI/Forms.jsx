@@ -3,18 +3,11 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import Switch from '@mui/material/Switch';
-import { Button } from "@mui/material";
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions } from "@mui/material";
 import FormHelperText from '@mui/material/FormHelperText';
 import axios from 'axios';
-import {
-    Container,
-    CssBaseline,
-    Grid,
-    MenuItem,
-    Select,
-    InputLabel,
-} from '@mui/material';
-import City from '../../Data/Country-City1.json'
+import { MenuItem } from '@mui/material';
+import City from '../../Data/Country-City1.json';
 
 
 export default function EndForm() {
@@ -50,11 +43,11 @@ export default function EndForm() {
 
     const handleCountryChange = (event) => {
         setSelectedCountry(event.target.value);
-        // Limpe o estado de city quando o país é alterado
         setCity('');
         const selectedCountry = event.target.value;
 
     };
+
 
     const handleSubmit = async (data) => {
         data.preventDefault();
@@ -64,6 +57,7 @@ export default function EndForm() {
         const isEmailValid = validateEmail();
         const isCodeValid = validateCode();
         const isCountryValid = validateForm();
+
 
         if (isNameValid && isEmailValid && isCodeValid && isCountryValid) {
             setName('');
@@ -82,6 +76,7 @@ export default function EndForm() {
                 city,
             };
 
+
             try {
 
                 const response = await axios.post('http://localhost:3001/formData', formData);
@@ -90,8 +85,7 @@ export default function EndForm() {
                 console.log('Dados do formulário enviados com sucesso', response.data);
                 alert('Form submitted successfully!');
             } catch (error) {
-
-                console.error('Erro ao enviar dados do formulário', error);
+                console.error('Erro ao enviar ou receber dados do formulário', error);
             }
         }
     };
@@ -170,7 +164,7 @@ export default function EndForm() {
                         title="Somente letras são permitidas"
                         onSubmit={validateName}
                         error={nameError}
-                        helperText={nameError ? "Somente letras são permitidas" : ""} />
+                        helperText={nameError ? "Somente letras são permitidas e é necessario um nome e sobrenome (exemplo: José Alves)" : ""} />
                 </FormControl>
 
             </div>
@@ -309,7 +303,6 @@ export default function EndForm() {
                     Submit
                 </Button>
             </div>
-
         </Box>
     );
 }
