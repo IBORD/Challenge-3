@@ -1,15 +1,11 @@
-
 import React, { useState, useEffect } from 'react';
-import InputLabel from '@mui/material/InputLabel';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import Switch from '@mui/material/Switch';
-import Car1 from '../../assets/car1.svg'
 import { Button } from "@mui/material";
 import FormHelperText from '@mui/material/FormHelperText';
-import RadioGroup from '@mui/material/RadioGroup';
-import Radio from '@mui/material/Radio';
+import axios from 'axios';
 
 export default function EndForm() {
     const [name, setName] = useState('');
@@ -26,13 +22,40 @@ export default function EndForm() {
         { label: 'Radio 3', value: 'radio3' },
     ]);
 
+    const handleSubmit = async (data) => {
+        data.preventDefault();
+
+        // Validar os dados do formulário
+        const isNameValid = validateName();
+        const isEmailValid = validateEmail();
+        const isCodeValid = validateCode();
+
+        if (isNameValid && isEmailValid && isCodeValid) {
+            // Coletar os dados do formulário do estado aqui
+            const formData = {
+                name,
+                email,
+                code,
+                carType,
+            };
+
+            try {
+
+                const response = await axios.post('http://localhost:3001/formData', formData);
+
+
+                console.log('Dados do formulário enviados com sucesso', response.data);
+            } catch (error) {
+
+                console.error('Erro ao enviar dados do formulário', error);
+            }
+        }
+    };
     const handleChange = (event) => {
         setChecked(event.target.checked);
     };
 
-    const handleCarTypeButtonClick = (value) => {
-        console.log(`Radio with value ${value} was clicked.`);
-    };
+
 
     const validateName = () => {
         if (!name.match(/[A-Za-z]+(\s[A-Za-z]+)+$/)) {
@@ -64,7 +87,7 @@ export default function EndForm() {
     useEffect(() => {
         if (checked) {
             setCarTypeButtons([
-                { label: <img src="https://i.ibb.co/YNWH8hm/Card-Image-1.png" alt="car1" />, value: 'radio1', name: 'car1' },
+                { label: <img src="https://i.ibb.co/YNWH8hm/Card-Image-1.png" alt="car1" />, value: 'sedan', name: 'car1' },
                 { label: <img src="https://i.ibb.co/2YPcMqh/Card-Image-2.png" alt="car2" />, value: 'radio2', name: 'car2' },
                 { label: <img src="https://i.ibb.co/dPYVKWW/Card-Image-3.png" alt="car3" />, value: 'radio3', name: 'car3' },
                 { label: <img src="https://i.ibb.co/KNSjXQK/Card-Image-4.png" alt="car4" />, value: 'radio4', name: 'car4' },
@@ -76,6 +99,7 @@ export default function EndForm() {
     return (
         <Box
             component="form"
+            onSubmit={handleSubmit}
             sx={{
                 '& > :not(style)': { m: 1, width: '75ch' }
             }
@@ -181,6 +205,12 @@ export default function EndForm() {
                     </div>
                 )}
             </div>
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Button variant="contained" color="warning" type="submit">
+                    Submit
+                </Button>
+            </div>
+
         </Box>
     );
 }
