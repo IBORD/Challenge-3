@@ -1,18 +1,38 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
-
-
-
+import Switch from '@mui/material/Switch';
+import Car1 from '../../assets/car1.svg'
+import { Button } from "@mui/material";
+import FormHelperText from '@mui/material/FormHelperText';
+import RadioGroup from '@mui/material/RadioGroup';
+import Radio from '@mui/material/Radio';
 
 export default function EndForm() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState(false);
-
+    const [code, setCode] = useState('');
+    const [codeError, setCodeError] = useState(false);
     const [nameError, setNameError] = useState(false);
+    const [checked, setChecked] = React.useState(true);
+    const [carType, setCarType] = useState('');
+    const [carTypeButtons, setCarTypeButtons] = useState([
+        { label: 'Radio 1', value: 'radio1' },
+        { label: 'Radio 2', value: 'radio2' },
+        { label: 'Radio 3', value: 'radio3' },
+    ]);
+
+    const handleChange = (event) => {
+        setChecked(event.target.checked);
+    };
+
+    const handleCarTypeButtonClick = (value) => {
+        console.log(`Radio with value ${value} was clicked.`);
+    };
 
     const validateName = () => {
         if (!name.match(/[A-Za-z]+(\s[A-Za-z]+)+$/)) {
@@ -21,7 +41,6 @@ export default function EndForm() {
         }
         setNameError(false);
         return true;
-
     };
 
     const validateEmail = () => {
@@ -33,7 +52,27 @@ export default function EndForm() {
         return true;
     };
 
+    const validateCode = () => {
+        if (!code.match(/^[A-Za-z]{3}-[0-9]{3}$/)) {
+            setCodeError(true);
+            return false;
+        }
+        setCodeError(false);
+        return true;
+    };
 
+    useEffect(() => {
+        if (checked) {
+            setCarTypeButtons([
+                { label: <img src="https://i.ibb.co/YNWH8hm/Card-Image-1.png" alt="car1" />, value: 'radio1', name: 'car1' },
+                { label: <img src="https://i.ibb.co/2YPcMqh/Card-Image-2.png" alt="car2" />, value: 'radio2', name: 'car2' },
+                { label: <img src="https://i.ibb.co/dPYVKWW/Card-Image-3.png" alt="car3" />, value: 'radio3', name: 'car3' },
+                { label: <img src="https://i.ibb.co/KNSjXQK/Card-Image-4.png" alt="car4" />, value: 'radio4', name: 'car4' },
+            ]);
+        } else {
+            setCarTypeButtons([]);
+        }
+    }, [checked]);
     return (
         <Box
             component="form"
@@ -46,9 +85,15 @@ export default function EndForm() {
         >
             <div>
                 <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
-                    <TextField id="name" value={name} onChange={(e) => setName(e.target.value)}
-                        required placeholder='Full Name' variant="outlined" pattern="[A-Za-z]+(\s[A-Za-z]+)+"
-                        title="Somente letras são permitidas" onBlur={validateName}
+                    <TextField
+                        id="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required placeholder='Full Name'
+                        variant="outlined"
+                        pattern="[A-Za-z]+(\s[A-Za-z]+)+"
+                        title="Somente letras são permitidas"
+                        onBlur={validateName}
                         error={nameError}
                         helperText={nameError ? "Somente letras são permitidas" : ""} />
                 </FormControl>
@@ -56,7 +101,12 @@ export default function EndForm() {
             </div>
             <div>
                 <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
-                    <TextField id="email" value={email} placeholder='Email Adress' variant="outlined" onChange={(e) => setEmail(e.target.value)}
+                    <TextField
+                        id="email"
+                        value={email}
+                        placeholder='Email Adress'
+                        variant="outlined"
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                         type="email" onBlur={validateEmail}
                         error={emailError}
@@ -65,7 +115,10 @@ export default function EndForm() {
             </div>
             <div>
                 <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
-                    <TextField id="outlined-basic" select label='Country' variant="outlined" />
+                    <TextField
+                        id="outlined-basic"
+                        select label='Country'
+                        variant="outlined" />
                 </FormControl>
             </div>
             <div>
@@ -75,11 +128,59 @@ export default function EndForm() {
             </div>
             <div>
                 <FormControl sx={{ m: 1, width: '75ch' }} variant="standard">
-                    <TextField id="outlined-basic" placeholder='Referral Code' variant="outlined" />
+                    <TextField
+                        id="code"
+                        value={code}
+                        onChange={(e) => setCode(e.target.value)}
+                        required
+                        placeholder="Código"
+                        variant="outlined"
+                        pattern="[A-Za-z]{3}-[0-9]{3}"
+                        title="O código deve seguir o formato de 3 letras, seguidas por um hífen e 3 números (exemplo: AAA-001)"
+                        onBlur={validateCode}
+                        error={codeError}
+                        helperText={codeError ? "O código deve seguir o formato de 3 letras, seguidas por um hífen e 3 números (exemplo: AAA-001)" : ""}
+                    />
                 </FormControl>
             </div>
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Switch
+                    checked={checked}
+                    onChange={(event) => {
+                        setChecked(event.target.checked);
+                        if (!event.target.checked) {
+                            setCarType('');
+                        }
+                    }}
+                    color='warning'
+                    inputProps={{ 'aria-label': 'controlled' }}
+                />
+            </div>
+            <div style={{ display: 'flex' }}>
+                {checked && (
+                    <div>
+                        {carTypeButtons.map((button) => (
+                            <div key={button.value}>
+                                <input
+                                    type="radio"
+                                    value={button.value}
+                                    checked={carType === button.value}
+                                    onChange={() => setCarType(button.value)}
+                                />
+                                <label htmlFor={button.value}>
+                                    {button.label}
+                                    <span style={{ display: 'block', marginTop: '5px', color: 'white' }}>{button.name}</span>
+                                </label>
+                            </div>
+                        ))}
+                        {!carType && (
+                            <FormHelperText error>
+                                Please select a car type
+                            </FormHelperText>
+                        )}
+                    </div>
+                )}
+            </div>
         </Box>
-
-
     );
 }

@@ -5,4 +5,21 @@
     flex-direction: column;
     padding: 100px;
     background: #242424;
+
+
+}
+
+.Header {
+    background: #2c2c2c;
+    padding: 20px;
+    border-radius: 3px;
+    margin-top: 20px;
+}
+
+
+.styleForm {
+    background: #2c2c2c;
+    padding: 20px;
+    border-radius: 3px;
+    margin-top: 20px;
 }
